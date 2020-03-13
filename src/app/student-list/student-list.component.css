@@ -1,0 +1,16 @@
+.title{
+  padding-top: 10px;
+}
+
+[popoverTitle]{
+  color: black;
+}
+
+.custom{
+  color: black;
+}
+
+.popover-title{
+  color: black;
+}
+.popover-header{ background: #ffff99; } .popover-content{ background: #ffff99; }

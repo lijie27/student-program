@@ -1,0 +1,56 @@
+<h3 class="title text-center">Professor Form</h3>
+
+<form [formGroup]="registerFormP">
+  <!--Name-->
+  <div class="form-group row">
+    <label class="col-form-label col-lg-1  ">Name:</label>
+    <div class="col-lg-2 col-md-6">
+      <input [ngModel]="professor?.name" formControlName="name" type="text" class="form-control form-control-sm"
+        (ngModelChange)="professor.name = $event" [ngClass]="{ 'is-invalid': name.invalid && name.touched }" />
+      <small class="text-danger" *ngIf="name.errors?.required && name.touched">*Username is required</small>
+      <small class="text-danger" *ngIf="name.errors?.minlength && name.touched">*Username must longer than 2
+        digit</small>
+    </div>
+
+    <!--college-->
+    <label class="col-form-label col-lg-1 offset-lg-3">Programme:</label>
+    <div class="col-lg-2 col-md-6">
+      <select class="form-control form-control-sm" formControlName="programme" [ngModel]="professor?.subject"
+        (ngModelChange)="professor.subject = $event">
+        <option value="IT">IT</option>
+        <option value="Account">Account</option>
+        <option value="Business">Business</option>
+      </select>
+    </div>
+    <small class="text-danger" *ngIf="programme.errors?.required && programme.touched">*Please choose your
+      programme</small>
+  </div>
+
+
+  <div class="form-group row">
+  <label class="col-form-label col-lg-1">Faculty:</label>
+  <div class="col-lg-2 col-md-6">
+    <select class="form-control form-control-sm" formControlName="faculty" [ngModel]="professor?.faculty"
+      (ngModelChange)="professor.faculty = $event">
+      <option value="FOCS">FOCS</option>
+      <option value="FAFB">FAFB</option>
+      <option value="FASC">FASC</option>
+    </select>
+  </div>
+  <small class="text-danger" *ngIf="faculty.errors?.required && faculty.touched">*Please choose your
+    faculty</small>
+  </div>
+
+
+
+  <!--button-->
+  <div class=" col-lg-12 text-center mt-3">
+    <button class="btn btn-success text-center d-inline p-2" type="submit" [disabled]="!registerFormP.valid"
+      (click)="onSubmit()">
+      Add
+    </button>
+    <button class="btn btn-warning  d-inline p-2" [disabled]="!registerFormP.valid" (click)="save()">
+      Save
+    </button>
+  </div>
+</form>

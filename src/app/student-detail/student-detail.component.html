@@ -1,0 +1,111 @@
+<h3 class="title text-center">Student Form</h3>
+
+<form [formGroup]="registerForm">
+  <!--Name-->
+  <div class="form-group row">
+    <label class="col-form-label col-lg-1  ">Name:</label>
+    <div class="col-lg-2 col-md-6">
+      <input
+        [ngModel]="student?.name"
+        formControlName="name"
+        type="text"
+        class="form-control form-control-sm"
+        (ngModelChange)="student.name = $event"
+        [ngClass]="{ 'is-invalid': name.invalid && name.touched }"
+      />
+      <small class="text-danger" *ngIf="name.errors?.required && name.touched"
+        >*Username is required</small
+      >
+      <small class="text-danger" *ngIf="name.errors?.minlength && name.touched"
+        >*Username must longer than 2 digit</small
+      >
+    </div>
+
+    <!--college-->
+    <label class="col-form-label col-lg-1 offset-lg-3">Programme:</label>
+    <div class="col-lg-2 col-md-6">
+      <select
+        class="form-control form-control-sm"
+        formControlName="college"
+        [ngModel]="student?.subject"
+        (ngModelChange)="student.subject = $event"
+      >
+        <option value="IT">IT</option>
+        <option value="Account">Account</option>
+        <option value="Business">Business</option>
+      </select>
+    </div>
+    <small
+      class="text-danger"
+      *ngIf="college.errors?.required && college.touched"
+      >*Please choose your programme</small
+    >
+  </div>
+
+  <!--age-->
+  <div class="form-group row ">
+    <label class="col-form-label col-lg-1  ">Age:</label>
+    <div class="col-lg-2 col-md-6">
+      <input
+        [ngModel]="student?.age"
+        (ngModelChange)="student.age = $event"
+        formControlName="age"
+        type="number"
+        class="form-control form-control-sm"
+        [ngClass]="{ 'is-invalid': age.invalid && age.touched }"
+      />
+      <small class="text-danger" *ngIf="age.errors?.required && age.touched"
+        >*Age is required</small
+      >
+      <small class="text-danger" *ngIf="age.errors?.min && age.touched"
+        >*Age must be more than 18 y/o</small
+      >
+    </div>
+
+    <!--Education-->
+    <label class="col-form-label col-lg-1 offset-lg-3  ">Education:</label>
+    <div class="col-lg-1 col-md-2">
+      <input
+        class="form-check"
+        type="radio"
+        value="Diploma"
+        [ngModel]="student?.education"
+        (ngModelChange)="student.education = $event"
+        formControlName="education"
+      />
+      <label class="text-white  ">Diploma</label>
+    </div>
+    <div class="col-lg-1 col-md-2">
+      <input
+        class="form-check "
+        type="radio"
+        value="Degree"
+        [ngModel]="student?.education"
+        (ngModelChange)="student.education = $event"
+        formControlName="education"
+      />
+      <label class="form-check-label text-white">Degree </label>
+    </div>
+    <small class="text-danger" *ngIf="education.errors?.required"
+      >*Please choose your education</small
+    >
+  </div>
+
+  <!--button-->
+  <div class=" col-lg-12 text-center mt-3">
+    <button
+      class="btn btn-success text-center d-inline p-2"
+      type="submit"
+      [disabled]="!registerForm.valid"
+      (click)="onSubmit()"
+    >
+      Add
+    </button>
+    <button
+    class="btn btn-warning  d-inline p-2"
+    [disabled]="!registerForm.valid"
+     (click)="save()">
+      Save
+    </button>
+  </div>
+</form>
