@@ -22,13 +22,13 @@
       <td>{{ student.age }}</td>
       <td>{{ student.subject }}</td>
       <td>{{ student.education }}</td>
-      <td>{{ student.professor}}</td>
+      <td>{{ student.professor?.name}}</td>
     <td>
 
         <button
         class="btn-danger"
         mwlConfirmationPopover
-        [popoverTitle]="popoverTitle"
+        [(popoverTitle)]="popoverTitle"
         [popoverMessage]="popoverMessage"
         placement = "left"
         (confirm)="delete(student)"

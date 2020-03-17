@@ -12,17 +12,17 @@
         digit</small>
     </div>
 
-    <!--college-->
+
     <label class="col-form-label col-lg-1 offset-lg-3">Programme:</label>
     <div class="col-lg-2 col-md-6">
-      <select class="form-control form-control-sm" formControlName="programme" [ngModel]="professor?.subject"
+      <select class="form-control form-control-sm" formControlName="subject" [ngModel]="professor?.subject"
         (ngModelChange)="professor.subject = $event">
         <option value="IT">IT</option>
         <option value="Account">Account</option>
         <option value="Business">Business</option>
       </select>
     </div>
-    <small class="text-danger" *ngIf="programme.errors?.required && programme.touched">*Please choose your
+    <small class="text-danger" *ngIf="subject.errors?.required && subject.touched">*Please choose your
       programme</small>
   </div>
 

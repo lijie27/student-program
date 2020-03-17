@@ -1,5 +1,5 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import {IStudent,IProfessor} from './college';
+import {IStudent,IProfessor} from '../college';
 import { Injectable } from '@angular/core';
 
 @Injectable({

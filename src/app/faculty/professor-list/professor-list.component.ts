@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentService } from "../student.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { IProfessor } from "../college";
-import { ProfessorDetailComponent } from "../professor-detail/professor-detail.component";
-import { ProfessorService } from '../professor.service';
+import { IProfessor } from "../../college";
+import { ProfessorService } from '../../service/professor.service';
 
 @Component({
   selector: 'app-professor-list',

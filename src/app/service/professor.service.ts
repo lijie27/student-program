@@ -4,10 +4,10 @@ import {
   HttpErrorResponse,
   HttpHeaders
 } from "@angular/common/http";
-import { IProfessor,IStudent } from "./college";
+import { IProfessor,IStudent } from "../college";
 import { Observable, of } from "rxjs";
 import { catchError, map, tap } from "rxjs/operators";
-import { MessageService } from "./message.service";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,7 +19,6 @@ export class ProfessorService {
 
   constructor(
     private _http: HttpClient,
-    private messageService: MessageService
   ) {}
 
   delete(professor: IProfessor | number): Observable<IProfessor> {
@@ -27,10 +26,6 @@ export class ProfessorService {
     const url = `${this._url}/${id}`;
 
     return this._http.delete<IProfessor>(url);
-  }
-
-  private log(message: string) {
-    this.messageService.add(`StudentService: ${message}`);
   }
 
   getProfessors(): Observable<IProfessor[]> {
@@ -41,8 +36,6 @@ export class ProfessorService {
     const url = `${this._url}/${id}`;
     return this._http.get<IProfessor>(url);
   }
-
-
 
   addProfessor(professor: IProfessor): Observable<any> {
     return this._http.post<any>(this._url, professor);

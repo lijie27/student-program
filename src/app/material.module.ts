@@ -5,7 +5,7 @@ import { MatMenuModule} from '@angular/material/menu';
 import { MatIconModule} from '@angular/material/icon';
 import { MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import { NavbarModule, WavesModule, ButtonsModule } from 'angular-bootstrap-md';
 
 @NgModule({
   imports: [
@@ -14,6 +14,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatMenuModule,
     MatToolbarModule,
     MatDialogModule,
+    NavbarModule, WavesModule, ButtonsModule,
   ],
   exports: [
     MatButtonModule,
@@ -21,6 +22,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatMenuModule,
     MatToolbarModule,
     MatDialogModule,
+    NavbarModule, WavesModule, ButtonsModule,
   ]
 })
 

@@ -22,12 +22,12 @@
     </div>
 
     <!--college-->
-    <label class="col-form-label col-lg-1 offset-lg-3">Programme:</label>
+    <label class="col-form-label col-lg-1 offset-lg-3">Subject:</label>
     <div class="col-lg-2 col-md-6">
       <select
+      [ngModel]="student?.subject"
         class="form-control form-control-sm"
-        formControlName="college"
-        [ngModel]="student?.subject"
+        formControlName="subject"
         (ngModelChange)="student.subject = $event"
       >
         <option value="IT">IT</option>
@@ -37,8 +37,8 @@
     </div>
     <small
       class="text-danger"
-      *ngIf="college.errors?.required && college.touched"
-      >*Please choose your programme</small
+      *ngIf="subject.errors?.required && subject.touched"
+      >*Please choose your subject</small
     >
   </div>
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { StudentService } from "../student.service";
+import { StudentService } from "../../service/student.service";
 import { FormBuilder, FormGroup,Validators } from "@angular/forms";
-import { IStudent } from "../college";
+import { IStudent } from "../../college";
 
 @Component({
   selector: "app-student-detail",
@@ -21,12 +21,13 @@ export class StudentDetailComponent implements OnInit {
   get age(){
     return this.registerForm.get('age');
   }
-  get college(){
-    return this.registerForm.get('college');
+  get subject(){
+    return this.registerForm.get('subject');
   }
   get education(){
     return this.registerForm.get('education');
   }
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,12 +41,11 @@ export class StudentDetailComponent implements OnInit {
   ngOnInit() {
 
     this.getStudent();
-
     this.registerForm = this.formBuilder.group({
       ID: [""],
       name: ["",[Validators.required,Validators.minLength(2)]],
       age: ["",[Validators.required,Validators.min(18)]],
-      college: ["",[Validators.required]],
+      subject: ["",[Validators.required]],
       education: ["",[Validators.required]]
     });
   }
@@ -65,7 +65,13 @@ export class StudentDetailComponent implements OnInit {
       });
   }
 
-  
+  // getProfessor(){
+  //   if (this.student.subject === "IT"){
+  //     this.student.professor === "Kenny";
+  //   }
+  //   return this.student.professor;
+  // }
+
   save(): void {
     this._studentService.updateStudent(this.student).subscribe(data => {
       this.router.navigate(["/student-list"]);

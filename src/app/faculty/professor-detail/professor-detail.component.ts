@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
-import { StudentService } from "../student.service";
 import { FormBuilder, FormGroup,Validators } from "@angular/forms";
-import { IStudent,IProfessor } from "../college";
-import { ProfessorService } from '../professor.service';
+import { IStudent,IProfessor } from "/Users/lijie.cheong/Desktop/New_show/student/src/app/college";
+import { ProfessorService } from '../../service/professor.service';
 
 @Component({
   selector: 'app-professor-detail',
@@ -20,8 +19,8 @@ export class ProfessorDetailComponent implements OnInit {
     get name(){
       return this.registerFormP.get('name');
     }
-    get programme(){
-      return this.registerFormP.get('programme');
+    get subject(){
+      return this.registerFormP.get('subject');
     }
     get faculty(){
       return this.registerFormP.get('faculty');
@@ -44,7 +43,7 @@ export class ProfessorDetailComponent implements OnInit {
       this.registerFormP = this.formBuilder.group({
         ID: [""],
         name: ["",[Validators.required,Validators.minLength(2)]],
-        programme: ["",[Validators.required]],
+        subject: ["",[Validators.required]],
         faculty: ["",[Validators.required]]
       });
     }
@@ -55,6 +54,7 @@ export class ProfessorDetailComponent implements OnInit {
         .getProfessor(id)
         .subscribe(professor => (this.professor = professor));
     }
+
 
     onSubmit() {
       this._professorService

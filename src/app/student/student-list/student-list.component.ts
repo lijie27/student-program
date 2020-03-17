@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { StudentService } from "../student.service";
+import { StudentService } from "../../service/student.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { IStudent, IProfessor } from "../college";
+import { IStudent, IProfessor } from "../../college";
 import { StudentDetailComponent } from "../student-detail/student-detail.component";
 
 @Component({
@@ -20,7 +20,6 @@ export class StudentListComponent implements OnInit {
   public popoverMessage : string = 'Are you sure you want to delete this student?';
   public confirmClicked : boolean = false;
   public cancelClicked : boolean = false;
-
 
   @ViewChild(StudentDetailComponent) child;
 
@@ -53,6 +52,7 @@ export class StudentListComponent implements OnInit {
   private loadAllUsers() {
     this._studentService.getStudents().subscribe(students => {
       this.students = students;
-    });
+
+  });
   }
 }
